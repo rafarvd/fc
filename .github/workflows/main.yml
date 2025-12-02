@@ -48,11 +48,6 @@ jobs:
       - name: Instalar dependências
         run: npm ci
 
-      - name: Cookies
-        env:
-          COOKIES: ${{ secrets.COOKIES }}
-        run: echo "$COOKIES" > cookies.json
-
       - name: Executar node index.js
         env:
           URL: ${{ secrets.URL }}
