@@ -59,7 +59,7 @@ jobs:
           LOGIN: ${{ secrets.LOGIN }}
           SENHA: ${{ secrets.SENHA }}
         timeout-minutes: 10
-        run: xvfb-run --auto-servernum -- node --trace-warnings cpick.js
+        run: xvfb-run --auto-servernum -- node --trace-warnings fc.js
         # run: node cpick.js
 
       - name: Upload da captura
