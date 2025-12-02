@@ -3,9 +3,6 @@ const fs = require("fs");
 const Tesseract = require("tesseract.js");
 require("dotenv").config({ quiet: true });
 
-const login = process.env.LOGIN;
-const url = process.env.URL;
-
 const ocr = async (imagem) => {
   try {
     const result = await Tesseract.recognize(imagem, "eng");
@@ -358,6 +355,9 @@ const fc = async () => {
       const newPage = await target.page();
       if (newPage) await newPage.close();
     });
+
+    const login = process.env.LOGIN;
+    const url = process.env.URL;
 
     await page.goto(`${url}/?r=${login}`, {
       waitUntil: "networkidle2",
