@@ -293,9 +293,9 @@ async function resolverCaptcha(page) {
 
     const resultado = operador === "+" ? a + b : a - b;
 
-    console.log(
-      `📌 Operação matemática detectada: ${a} ${operador} ${b} = ${resultado}`
-    );
+    // console.log(
+    //   `📌 Operação matemática detectada: ${a} ${operador} ${b} = ${resultado}`
+    // );
 
     return String(resultado);
   }
@@ -413,7 +413,7 @@ const fc = async () => {
       return alert ? alert.trim() : null;
     });
     if(capSucesso){
-      // await page.click('input[type="submit"]');
+      await page.click('input[type="submit"]');
       console.log("Captcha respondido com sucesso!");
     }
     await new Promise((r) => setTimeout(r, 5000));
