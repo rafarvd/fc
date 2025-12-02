@@ -75,6 +75,7 @@ const capResposta = {
     "germany",
     "hungary",
     "india",
+    "liberia",
     "japan",
     "kenya",
     "latvia",
@@ -405,6 +406,16 @@ const fc = async () => {
         { delay: 30 }
       );
     }
+    const capSucesso = await page.evaluate(() => {
+      let alert = document.querySelector(
+        "form > div.step2 > div:nth-child(3) > div.col-sm-5.col-md-7 > input:nth-child(1)"
+      ).value;
+      return alert ? alert.trim() : null;
+    });
+    if(capSucesso){
+      // await page.click('input[type="submit"]');
+      console.log("Captcha respondido com sucesso!");
+    }
     await new Promise((r) => setTimeout(r, 5000));
     await page.screenshot({ path: "screen.png" });
   } catch (error) {
@@ -412,7 +423,7 @@ const fc = async () => {
     console.error(`Erro interno do servidor: ${error.message}`);
     await browser.close();
     await new Promise((r) => setTimeout(r, 5000));
-    await fc();
+    //await fc();
   } finally {
     await browser.close();
   }
