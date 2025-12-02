@@ -388,12 +388,12 @@ const fc = async () => {
 
     // if document.querySelector(".alert-success > strong > u").innerText;
 
-    await page.evaluate(() => {
+    await page.evaluate((loginValue) => {
       const input = document.querySelector(
         'input[type="text"][placeholder="Please enter your FaucetPay.io address"]'
       );
-      if (input) input.value = login;
-    });
+      if (input) input.value = loginValue;
+    }, login);
 
     const resposta = await resolverCaptcha(page);
     if (!resposta) {
